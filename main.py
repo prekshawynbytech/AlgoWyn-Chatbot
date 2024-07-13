@@ -8,14 +8,18 @@ from dotenv import load_dotenv
 from langchain.schema import HumanMessage, AIMessage
 
 import pandas as pd
-load_dotenv()
+
 from cypher_chain import CYPHER_QA_PROMPT
 st.set_option('deprecation.showfileUploaderEncoding', False)
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
+
 st.title("Stock Data Chatbot")
 
 from cypher_chain import CustomCypherChain
+def creds():
+    load_dotenv()
+
 
 # Load secrets
 url = "neo4j+s://c1e96139.databases.neo4j.io"
@@ -104,7 +108,6 @@ def get_text() -> str:
 
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
-openai_api_key = "sk-None-5gvwQgiGTcUl9O3uV9NoT3BlbkFJWAvwkGDT83BDZhLqy06s"
 
 os.environ["OPENAI_API_KEY"] = openai_api_key
 if not openai_api_key:
